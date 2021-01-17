@@ -102,7 +102,44 @@ function teamBuilder() {
                                 teamSelectorPrompt();
                             })
                     }
-               
+                } else if (userChoice.employee === "Intern") {
+                // Intern Questions    
+                    internPrompt() {
+                        inquirer.prompt([
+                            {
+                                type: "input",
+                                message: "What is your intern's name?",
+                                name: "name",
+                                default: "Intern's Name"
+                            },
+                            {
+                                type: "input",
+                                message: "What is your intern's id?",
+                                name: "id",
+                                default: "Intern's ID Number"
+                            },
+                            {
+                                type: "input",
+                                message: "What is your intern's email?",
+                                name: "email",
+                                default: "intern@email.com"
+                            },
+                            {
+                                type: "input",
+                                message: "What is your intern's school?",
+                                name: "school",
+                                default: "Intern's School"
+                            }
+                        ])
+                
+                            .then(function (internInputs) {
+                                const intern = new Intern(internInputs.name, internInputs.id, internInputs.email, internInputs.school);
+                                employees.push(intern);
+                                teamSelectorPrompt();
+                            })
+                    }
+                    
+                    
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
