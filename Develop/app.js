@@ -52,6 +52,21 @@ function teamBuilder() {
         const manager = new Manager(managerInputs.name, managerInputs.id, managerInputs.email, managerInputs.officeNumber);
         employees.push(manager);
 
+                // Listed inquiry to select the type of team member to be added next
+        function teamSelectorPrompt() {
+            inquirer.prompt([
+                {
+                    type: "list",
+                    message: "Which type of team member would you like to add?",
+                    name: "employee",
+                    choices: [
+                        "Engineer",
+                        "Intern",
+                        "None"
+                    ]
+                }
+            ])
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
