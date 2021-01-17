@@ -53,7 +53,7 @@ function teamBuilder() {
         employees.push(manager);
 
                 // Listed inquiry to select the type of team member to be added next
-        function teamSelectorPrompt() {
+        teamSelectorPrompt() {
             inquirer.prompt([
                 {
                     type: "list",
@@ -66,8 +66,43 @@ function teamBuilder() {
                     ]
                 }
             ])
+            //Engineer Questions
+            .then(function (userChoice) {
+                if (userChoice.employee === "Engineer") {
+                    engineerPrompt() {
+                        inquirer.prompt([{
+                            type: "input",
+                            message: "What is your engineer's name?",
+                            name: "name",
+                            default: "Engineer's Name"
+                        },
+                        {
+                            type: "input",
+                            message: "What is your engineer's id?",
+                            name: "id",
+                            default: "Engineer's ID Number"
+                        },
+                        {
+                            type: "input",
+                            message: "What is your engineer's email?",
+                            name: "email",
+                            default: "engineer@email.com"
+                        },
+                        {
+                            type: "input",
+                            message: "What is your engineer's Github?",
+                            name: "github",
+                            default: "Engineer's GitHub username"
+                        }
+                        ])
 
-
+                            .then(function (engineerInputs) {
+                                const engineer = new Engineer(engineerInputs.name, engineerInputs.id, engineerInputs.email, engineerInputs.github);
+                                employees.push(engineer);
+                                teamSelectorPrompt();
+                            })
+                    }
+               
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
