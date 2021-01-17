@@ -10,14 +10,13 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
 const employees = [];
+
+teamBuilder();
 
 function teamBuilder() {
 
-    console.log("Are you ready to build a team?")
+    console.log("Answer Below Questions Please")
 
     inquirer.prompt([
         // Manager 
@@ -53,7 +52,10 @@ function teamBuilder() {
         employees.push(manager);
 
                 // Listed inquiry to select the type of team member to be added next
-        teamSelectorPrompt() {
+        
+        teamSelectorPrompt();
+        
+        function teamSelectorPrompt() {
             inquirer.prompt([
                 {
                     type: "list",
@@ -69,7 +71,10 @@ function teamBuilder() {
             //Engineer Questions
             .then(function (userChoice) {
                 if (userChoice.employee === "Engineer") {
-                    engineerPrompt() {
+                    
+                    engineerPrompt();
+
+                    function engineerPrompt() {
                         inquirer.prompt([{
                             type: "input",
                             message: "What is your engineer's name?",
@@ -104,7 +109,10 @@ function teamBuilder() {
                     }
                 } else if (userChoice.employee === "Intern") {
                 // Intern Questions    
-                    internPrompt() {
+
+                internPrompt();
+
+                    function internPrompt() {
                         inquirer.prompt([
                             {
                                 type: "input",
